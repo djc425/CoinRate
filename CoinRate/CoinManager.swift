@@ -19,7 +19,7 @@ struct CoinManager {
     // API Key from coinAPI.io, we call this with the url add on of ?apikey=
     let apiKey = "01641997-4F34-4DC3-9C50-507A22C2CF43"
     
-    let currencyCountryArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","ILS","INR","JPY","MXN","NZD","PLN","SGD","USD",]
+    let currencyCountryArray = ["AUD","BRL","CAD","EUR","GBP","HKD","JPY","MXN","NZD","SGD","USD"]
     
     
     let coinKeyValues: KeyValuePairs =  ["BTC" : "Bitcoin",

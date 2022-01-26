@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     // top field where chosen coin and current exchance price is shown
     var currentPriceLabel: UILabel!
-    var currentCoinLabel: UILabel!
+    var currentCurrencyLabel: UILabel!
     var currencySymbolView = UIImageView()
     var currencySymbol: UIImage!
     var currentPriceTitle: UILabel!
@@ -65,7 +65,7 @@ extension ViewController: CoinManagerDelegate {
     func didUpdateExchangeRate(price: String, currency: String) {
         DispatchQueue.main.async {
             self.currentPriceLabel.text = price
-            self.currentCoinLabel.text = currency
+            self.currentCurrencyLabel.text = currency
         }
     }
     
@@ -118,7 +118,10 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             selectedCurrencyLabel.text = coinManager.currencyCountryArray[row]
         }
         
-        coinManager.getCoinPrice(currency: selectedCurrencyLabel.text!, coin: coinManager.coinKeyValues[row].key)
+        print(selectedCurrencyLabel.text!)
+        
+            coinManager.getCoinPrice(currency: selectedCurrencyLabel.text!, coin: coinManager.coinKeyValues[row].key)
+    
     }
     
     
@@ -142,11 +145,11 @@ extension ViewController {
         currentPriceLabel.layer.cornerRadius = 10
         topField.addSubview(currentPriceLabel)
         
-        currentCoinLabel = UILabel()
-        currentCoinLabel.translatesAutoresizingMaskIntoConstraints = false
-        currentCoinLabel.text = "BTC"
-        currentCoinLabel.font = UIFont(name: "Futura", size: 24.0)
-        topField.addSubview(currentCoinLabel)
+        currentCurrencyLabel = UILabel()
+        currentCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
+        currentCurrencyLabel.text = "AUD"
+        currentCurrencyLabel.font = UIFont(name: "Futura", size: 24.0)
+        topField.addSubview(currentCurrencyLabel)
         
         currentPriceTitle = UILabel()
         currentPriceTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -164,7 +167,7 @@ extension ViewController {
         // currency field properties
         selectedCurrencyLabel = UILabel()
         selectedCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
-        selectedCurrencyLabel.text = "USD"
+        selectedCurrencyLabel.text = "AUD"
         selectedCurrencyLabel.font = UIFont(name: "Futura", size: 24)
         selectedCurrencyLabel.textAlignment = .center
         currencyField.addSubview(selectedCurrencyLabel)
@@ -180,7 +183,7 @@ extension ViewController {
         // coin field properties
         selectedCoinLabel = UILabel()
         selectedCoinLabel.translatesAutoresizingMaskIntoConstraints = false
-        selectedCoinLabel.text = "BTC"
+        selectedCoinLabel.text = "Bitcoin"
         selectedCoinLabel.font = UIFont(name: "Futura", size: 24)
         selectedCoinLabel.textAlignment = .center
         coinField.addSubview(selectedCoinLabel)
@@ -201,8 +204,8 @@ extension ViewController {
             currentPriceLabel.widthAnchor.constraint(equalTo: topField.widthAnchor, multiplier: 0.5),
             currentPriceLabel.heightAnchor.constraint(equalTo: topField.heightAnchor, multiplier: 0.2),
             
-            currentCoinLabel.centerYAnchor.constraint(equalTo: currentPriceLabel.centerYAnchor),
-            currentCoinLabel.trailingAnchor.constraint(equalTo: currentPriceLabel.leadingAnchor, constant: -10),
+            currentCurrencyLabel.centerYAnchor.constraint(equalTo: currentPriceLabel.centerYAnchor),
+            currentCurrencyLabel.trailingAnchor.constraint(equalTo: currentPriceLabel.leadingAnchor, constant: -10),
             
             currentPriceTitle.centerXAnchor.constraint(equalTo: currentPriceLabel.centerXAnchor),
             currentPriceTitle.bottomAnchor.constraint(equalTo: currentPriceLabel.bottomAnchor, constant: 20),
